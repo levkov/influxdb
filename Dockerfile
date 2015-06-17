@@ -1,6 +1,7 @@
 FROM ubuntu:14.04
 MAINTAINER levkov
 ENV DEBIAN_FRONTEND noninteractive
+RUN locale-gen en_US.UTF-8
  
 RUN apt-get update
 RUN apt-get install vim -y
@@ -14,7 +15,6 @@ RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so
 ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-RUN locale-gen en_US.UTF-8
 
 COPY dfg.sh /usr/local/bin/dfg.sh
 RUN  chmod +x /usr/local/bin/dfg.sh
