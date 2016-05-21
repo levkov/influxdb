@@ -19,8 +19,8 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY dfg.sh /usr/local/bin/dfg.sh
 RUN  chmod +x /usr/local/bin/dfg.sh
 
-RUN wget https://s3.amazonaws.com/influxdb/influxdb_0.9.1_amd64.deb
-RUN dpkg -i influxdb_0.9.1_amd64.deb
+RUN wget https://dl.influxdata.com/influxdb/releases/influxdb_0.13.0_amd64.deb
+RUN dpkg -i influxdb_0.13.0_amd64.deb
 
 EXPOSE 22 9001 8083 8086
 CMD ["/usr/bin/supervisord"]
